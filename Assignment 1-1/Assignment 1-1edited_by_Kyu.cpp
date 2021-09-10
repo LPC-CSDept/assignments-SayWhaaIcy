@@ -18,9 +18,14 @@ int main()
     ofstream ofs;
 
     Student s[10];
-    ifs.open("students.txt");
+    ifs.open("Students.txt");
     ofs.open("student.bin");
 
+	if ( ifs.fail())
+	{
+		cout << "Fail to open \n";
+		exit(0);
+	}
 // To read students.txt file
     for (int i=0; i<10; i++)
     {
@@ -38,7 +43,7 @@ int main()
 // Writing values from "Student structure into binary file "students.bin"
     for (int i=0; i<10; i++)
     {
-        ofs.write( (char *)&s, sizeof(s));
+        ofs.write( (char *)&s[i], sizeof(s));
     }
 
     findStudent(s);
